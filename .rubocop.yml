@@ -1,0 +1,43 @@
+require: rubocop-rails
+
+AllCops:
+  EnabledByDefault: true
+  Exclude:
+    - 'bin/**/*'
+    - 'test/**/*'
+    - 'Rakefile'
+  TargetRubyVersion: 2.6
+
+Bundler/GemComment:
+  Enabled: false
+
+Lint/ConstantResolution:
+  Enabled: false
+
+Style/Copyright:
+  Enabled: false
+
+Style/DisableCopsWithinSourceCodeDirective:
+  AllowedCops:
+    - Metrics/ParameterLists
+
+Style/Documentation:
+  Enabled: false
+
+Style/DocumentationMethod:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/MethodCallWithArgsParentheses:
+  AllowParenthesesInCamelCaseMethod: true
+  EnforcedStyle: omit_parentheses
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%i': '()'
+
+Style/WordArray:
+  Enabled: true
+  EnforcedStyle: percent

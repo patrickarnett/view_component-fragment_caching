@@ -1,0 +1,29 @@
+require_relative 'lib/view_component/fragment_caching/version'
+
+::Gem::Specification.new do |spec|
+  spec.name        = 'view_component-fragment_caching'
+  spec.version     = ::ViewComponent::FragmentCaching::VERSION
+  spec.authors     = ['Patrick Arnett']
+  spec.email       = ['parnett@g2.com']
+  spec.summary     = 'Bust fragment caches when view components update'
+  spec.description = 'Monkey patch ActiveView and ViewComponent to detect and compile' \
+                     'updated view components within cached fragments.'
+  spec.license     = 'MIT'
+
+  github_url = 'https://www.github.com/patrickarnett/view_component-fragment_caching'
+  spec.metadata['source_code_uri'] = github_url
+  spec.metadata['changelog_uri'] = "#{github_url}/blob/main/CHANGELOG.md"
+  spec.metadata['rubygems_mfa_required'] = 'true'
+
+  spec.required_ruby_version = '>= 2.6.0'
+
+  spec.files =
+    ::Dir.chdir ::File.expand_path(__dir__) do
+      ::Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
+    end
+
+  spec.add_dependency 'rails', '~> 7.0.2'
+
+  spec.add_development_dependency 'rubocop', '~> 1.26'
+  spec.add_development_dependency 'rubocop-rails', '~> 2.14'
+end
