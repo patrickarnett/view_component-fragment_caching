@@ -2,6 +2,7 @@ require 'view_component/fragment_caching/version'
 require 'view_component/fragment_caching/engine'
 require 'view_component/fragment_caching/configuration'
 require 'view_component/fragment_caching/compilers/inherited_template_compilation'
+require 'view_component/fragment_caching/digestors/with_view_component_rb'
 require 'view_component/fragment_caching/resolvers/view_component_resolver'
 require 'view_component/fragment_caching/trackers/view_component_tracking'
 
