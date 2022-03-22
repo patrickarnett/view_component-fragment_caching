@@ -2,18 +2,20 @@ require 'view_component/fragment_caching/version'
 require 'view_component/fragment_caching/engine'
 require 'view_component/fragment_caching/configuration'
 require 'view_component/fragment_caching/resolvers/view_component_resolver'
+require 'view_component/fragment_caching/trackers/view_component_tracking'
 
 require 'action_view'
 
 module ViewComponent
   module FragmentCaching
-    CONFIGURATION = Configuration.new
-    private_constant :CONFIGURATION
+    @configuration = Configuration.new
 
     class << self
-      delegate :view_component_paths, to: :configuration
+      attr_reader :configuration
 
-      def config
+      delegate :view_component_paths, to: :configuration, private: true
+
+      def configure
         yield configuration
       end
 
@@ -22,10 +24,6 @@ module ViewComponent
       end
 
       private
-
-      def configuration
-        CONFIGURATION
-      end
 
       def prepend_view_component_paths(context)
         Dir[*view_component_paths].each do |dir|

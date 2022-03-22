@@ -7,7 +7,7 @@ end
 Rails.application.reloader.to_prepare do
   ActiveSupport.on_load :action_view do
     ActiveSupport.on_load :after_initialize do
-      # ActionView::DependencyTracker::ERBTracker.prepend TemplateHandlers::Trackers::ViewComponentTracking
+      ActionView::DependencyTracker::ERBTracker.prepend ViewComponent::FragmentCaching::Trackers::ViewComponentTracking
       # ViewComponent::Compiler.prepend TemplateHandlers::Compilers::InheritedTemplateCompilation
       # ActionView::Digestor::Node.prepend TemplateHandlers::Digestors::WithViewComponentRb
       #

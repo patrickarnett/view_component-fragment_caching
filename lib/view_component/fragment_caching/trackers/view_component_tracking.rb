@@ -17,7 +17,7 @@ module ViewComponent
         MODULE_NAME_END = /(?:\b[^:])/.freeze
         private_constant :MODULE_NAME_END
 
-        INVOKE_METHOD = /(?:\s+\.\s*(((public_)?send?(\s+\(?\s*):)?))/.freeze
+        INVOKE_METHOD = /(?:\s*\.\s*(((public_)?send?(\s*\(?\s*):)?))/.freeze
         private_constant :INVOKE_METHOD
 
         INITIALIZE_METHOD_NAME = /(?:\b(new|with_collection)\b)/.freeze
@@ -53,7 +53,8 @@ module ViewComponent
 
         def render_dependencies
           [].tap do |render_dependencies|
-            render_calls = source.split(/\brender\b/).drop 1
+            render_calls = source.split(/\brender\b/).drop(1)
+
             render_calls.each do |arguments|
               add_dependencies render_dependencies, arguments, self.class::LAYOUT_DEPENDENCY
               add_dependencies render_dependencies, arguments, self.class::RENDER_ARGUMENTS
@@ -64,11 +65,10 @@ module ViewComponent
 
         def add_dependencies(render_dependencies, arguments, pattern)
           arguments.scan pattern do
-            match = Regexp.last_match&.named_captures || {}
-
-            add_dynamic_dependency render_dependencies, match['dynamic']
-            add_static_dependency render_dependencies, match['static'], match['quote']
-            add_view_component_dependency render_dependencies, match['view_component']
+            match = Regexp.last_match.named_captures.symbolize_keys
+            add_dynamic_dependency render_dependencies, match[:dynamic]
+            add_static_dependency render_dependencies, match[:static], match[:quote]
+            add_view_component_dependency render_dependencies, match[:view_component]
           end
         end
 
@@ -79,14 +79,14 @@ module ViewComponent
         end
 
         def view_component_inheritance_dependencies
-          find_view_component_dependencies VIEW_COMPONENT_INHERITANCE_DEPENDENCY
+          scan_source VIEW_COMPONENT_INHERITANCE_DEPENDENCY
         end
 
         def explicit_view_component_dependencies
-          find_view_component_dependencies EXPLICIT_VIEW_COMPONENT_DEPENDENCY
+          scan_source EXPLICIT_VIEW_COMPONENT_DEPENDENCY
         end
 
-        def find_view_component_dependencies(pattern)
+        def scan_source(pattern)
           source.scan(pattern).flatten.uniq.map(&:underscore)
         end
       end
