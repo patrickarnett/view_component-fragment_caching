@@ -1,12 +1,6 @@
-require 'view_component/fragment_caching/version'
-require 'view_component/fragment_caching/engine'
-require 'view_component/fragment_caching/configuration'
-require 'view_component/fragment_caching/compilers/inherited_template_compilation'
-require 'view_component/fragment_caching/digestors/with_view_component_rb'
-require 'view_component/fragment_caching/resolvers/view_component_resolver'
-require 'view_component/fragment_caching/trackers/view_component_tracking'
-
-require 'action_view'
+require 'pry'
+require 'action_view/dependency_tracker/erb_tracker'
+Dir[File.expand_path './fragment_caching/**/*.rb', __dir__].sort.each(&method(:require))
 
 module ViewComponent
   module FragmentCaching
@@ -15,7 +9,7 @@ module ViewComponent
     class << self
       attr_reader :configuration
 
-      delegate :view_component_paths, to: :configuration, private: true
+      delegate :view_component_paths, to: :configuration
 
       def configure
         yield configuration
@@ -28,7 +22,11 @@ module ViewComponent
       private
 
       def prepend_view_component_paths(context)
-        Dir[*view_component_paths].each do |dir|
+        full_paths =
+          view_component_paths.map do |path|
+            Rails.root.join path
+          end
+        Dir[*full_paths].each do |dir|
           resolver = Resolvers::ViewComponentResolver.new dir
           context.prepend_view_path resolver
         end

@@ -4,21 +4,27 @@ AllCops:
   EnabledByDefault: true
   Exclude:
     - 'bin/**/*'
-    - 'test/**/*'
     - 'Rakefile'
   TargetRubyVersion: 2.6
 
 Bundler/GemComment:
   Enabled: false
 
+Layout/RedundantLineBreak:
+  Enabled: false
+
 Lint/ConstantResolution:
   Enabled: false
+
+Style/ClassMethodsDefinitions:
+  EnforcedStyle: self_class
 
 Style/Copyright:
   Enabled: false
 
 Style/DisableCopsWithinSourceCodeDirective:
   AllowedCops:
+    - Metrics/BlockLength
     - Metrics/ParameterLists
 
 Style/Documentation:
@@ -37,6 +43,7 @@ Style/MethodCallWithArgsParentheses:
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
     '%i': '()'
+    '%w': '()'
 
 Style/WordArray:
   Enabled: true

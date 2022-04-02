@@ -23,7 +23,11 @@ require_relative 'lib/view_component/fragment_caching/version'
     end
 
   spec.add_dependency 'rails', '~> 7.0.2'
+  spec.add_dependency 'view_component', '~> 2.51'
 
+  spec.add_development_dependency 'capybara', '~> 3.36'
+  spec.add_development_dependency 'pry-rails', '~> 0.3'
+  spec.add_development_dependency 'rspec-rails', '~> 5.1'
   spec.add_development_dependency 'rubocop', '~> 1.26'
   spec.add_development_dependency 'rubocop-rails', '~> 2.14'
 end
