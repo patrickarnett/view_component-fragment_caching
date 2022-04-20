@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   private
 
   def load_blog
-    @blog = Blog.new title: params[:title]
+    @blog = Blog.new params[:title]
   end
 end

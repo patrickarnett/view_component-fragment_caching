@@ -1,15 +1,15 @@
-require_relative "boot"
+require_relative 'boot'
 
-require "rails/all"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-require "view_component/fragment_caching"
+require 'view_component/fragment_caching'
 
 module Dummy
   class Application < Rails::Application
-    config.load_defaults Rails::VERSION::STRING.to_f
+    config.load_defaults Float(Rails::VERSION::STRING.split('.').first(2).join('.'))
 
     # For compatibility with applications that use this config
     config.action_controller.include_all_helpers = false

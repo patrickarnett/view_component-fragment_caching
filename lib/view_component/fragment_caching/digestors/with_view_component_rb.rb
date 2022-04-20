@@ -2,8 +2,10 @@ module ViewComponent
   module FragmentCaching
     module Digestors
       module WithViewComponentRb
-        def self.prepended(mod)
-          mod.singleton_class.prepend ClassMethods
+        class << self
+          def prepended(mod)
+            mod.singleton_class.prepend ClassMethods
+          end
         end
 
         module ClassMethods

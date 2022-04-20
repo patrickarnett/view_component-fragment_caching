@@ -1,17 +1,17 @@
 class ComponentFile
   def initialize(path)
     @path = Rails.root.join(path).to_s
-    load_version 1
+    load version: 1
   end
 
-  def load_version(version)
+  def load(version:)
     @version = version
     source = File.read versioned_path
     File.write path, source
   end
 
   def reset
-    load_version 1
+    load version: 1
   end
 
   private

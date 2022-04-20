@@ -4,9 +4,9 @@ require_relative 'lib/view_component/fragment_caching/version'
   spec.name        = 'view_component-fragment_caching'
   spec.version     = ::ViewComponent::FragmentCaching::VERSION
   spec.authors     = ['Patrick Arnett']
-  spec.email       = ['parnett@g2.com']
+  spec.email       = ['patrick.a.arnett@gmail.com']
   spec.summary     = 'Bust fragment caches when view components update'
-  spec.description = 'Monkey patch ActiveView and ViewComponent to detect and compile' \
+  spec.description = 'Monkey patch ActionView and ViewComponent to detect and compile' \
                      'updated view components within cached fragments.'
   spec.license     = 'MIT'
 
@@ -22,12 +22,12 @@ require_relative 'lib/view_component/fragment_caching/version'
       ::Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
     end
 
-  spec.add_dependency 'rails', '~> 7.0.2'
-  spec.add_dependency 'view_component', '~> 2.51'
+  spec.add_dependency 'rails', '~> 7.0'
+  spec.add_dependency 'view_component', '~> 2.43'
 
   spec.add_development_dependency 'capybara', '~> 3.36'
-  spec.add_development_dependency 'pry-rails', '~> 0.3'
   spec.add_development_dependency 'rspec-rails', '~> 5.1'
   spec.add_development_dependency 'rubocop', '~> 1.26'
   spec.add_development_dependency 'rubocop-rails', '~> 2.14'
+  spec.add_development_dependency 'rubocop-rspec', '~> 2.10'
 end

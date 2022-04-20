@@ -1,10 +1,13 @@
-require: rubocop-rails
+require:
+  - rubocop-rails
+  - rubocop-rspec
 
 AllCops:
   EnabledByDefault: true
   Exclude:
     - 'bin/**/*'
     - 'Rakefile'
+    - 'spec/dummy/bin/**/*'
   TargetRubyVersion: 2.6
 
 Bundler/GemComment:
@@ -14,6 +17,21 @@ Layout/RedundantLineBreak:
   Enabled: false
 
 Lint/ConstantResolution:
+  Enabled: false
+
+RSpec/AlignLeftLetBrace:
+  Enabled: false
+
+RSpec/AlignRightLetBrace:
+  Enabled: false
+
+RSpec/LetSetup:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/NestedGroups:
   Enabled: false
 
 Style/ClassMethodsDefinitions:
@@ -26,6 +44,7 @@ Style/DisableCopsWithinSourceCodeDirective:
   AllowedCops:
     - Metrics/BlockLength
     - Metrics/ParameterLists
+    - Naming/AccessorMethodName
 
 Style/Documentation:
   Enabled: false
@@ -39,6 +58,9 @@ Style/FrozenStringLiteralComment:
 Style/MethodCallWithArgsParentheses:
   AllowParenthesesInCamelCaseMethod: true
   EnforcedStyle: omit_parentheses
+
+Style/MissingElse:
+  Enabled: false
 
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:

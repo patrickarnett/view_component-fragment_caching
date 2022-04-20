@@ -1,0 +1,10 @@
+<div id="top-level">
+  <div id="uncached">
+    <%= @blog %>
+  </div>
+
+  <%# View Component Dependency: Blogs::ExtendedBlogComponent %>
+  <% cache do %>
+    <%= render @component %>
+  <% end %>
+</div>

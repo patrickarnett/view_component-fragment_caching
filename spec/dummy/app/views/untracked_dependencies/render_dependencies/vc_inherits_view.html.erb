@@ -3,8 +3,7 @@
     <%= @blog %>
   </div>
 
-  <%# View Component Dependency: Blogs::BlogComponent %>
   <% cache do %>
-    <%= render @component %>
+    <%= render Users::ExtendedUserComponent.new @blog %>
   <% end %>
 </div>
