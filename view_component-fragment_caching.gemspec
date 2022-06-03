@@ -30,4 +30,5 @@ require_relative 'lib/view_component/fragment_caching/version'
   spec.add_development_dependency 'rubocop', '~> 1.26'
   spec.add_development_dependency 'rubocop-rails', '~> 2.14'
   spec.add_development_dependency 'rubocop-rspec', '~> 2.10'
+  spec.add_development_dependency 'pry-rails'
 end

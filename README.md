@@ -1,5 +1,24 @@
 # ViewComponent::FragmentCaching
-Short description and motivation.
+With fragment caching in Rails, updates to a partial's source code will automatically bust
+appropriate caches in which the partial is detectable as a dependency. There are two types
+of dependencies.
+
+### Render dependencies
+```ruby
+<%= render 'path/to/partial' %>
+<%= render Users::AuthorCardComponent.new(...) %>
+<%= render @user %>
+```
+In the second and third examples, ActionView will guess that the associated partial is at
+`/users/_user`.
+
+### Explicit dependencies
+```ruby
+<%# Template Dependency: 'path/to/partial' %>
+<%= render some_object %>
+```
+
+
 
 ## Usage
 How to use my plugin.
