@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    view_component-fragment_caching (0.1.0)
+    view_component-fragment_caching (0.2.0)
       rails (~> 7.0)
       view_component (~> 2.43)
 
@@ -209,13 +209,13 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
-    strscan (3.0.1)
+    strscan (3.0.3)
     thor (1.2.1)
-    timeout (0.2.0)
+    timeout (0.3.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.1.0)
-    view_component (2.52.0)
+    view_component (2.57.0)
       activesupport (>= 5.0.0, < 8.0)
       method_source (~> 1.0)
     websocket-driver (0.7.5)
@@ -227,6 +227,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-darwin-21
 
 DEPENDENCIES
   capybara (~> 3.36)

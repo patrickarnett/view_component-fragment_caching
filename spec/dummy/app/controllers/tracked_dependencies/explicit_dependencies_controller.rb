@@ -7,5 +7,9 @@ module TrackedDependencies
     def vc_inherits_view
       @component = Blogs::ExtendedBlogComponent.new @blog
     end
+
+    def vc_child_has_view
+      @component = Blogs::ExtendedWithViewBlogComponent.new @blog
+    end
   end
 end

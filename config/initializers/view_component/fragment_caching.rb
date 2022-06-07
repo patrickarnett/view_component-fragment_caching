@@ -9,7 +9,6 @@ Rails.application.reloader.to_prepare do
     ActiveSupport.on_load :after_initialize do
       ActionView::DependencyTracker::ERBTracker.prepend ViewComponent::FragmentCaching::Trackers::ViewComponentTracking
       ActionView::Digestor::Node.prepend ViewComponent::FragmentCaching::Digestors::WithViewComponentRb
-      ViewComponent::Compiler.prepend ViewComponent::FragmentCaching::Compilers::InheritedTemplateCompilation
 
       ViewComponent::FragmentCaching::Resolvers::ViewComponentResolver::VIEW_COMPONENT_RUBY_HANDLER.tap do |vc_rb|
         ActionView::Template.register_template_handler vc_rb, ActionView::Template::Handlers::ERB.new
