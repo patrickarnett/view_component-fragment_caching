@@ -23,6 +23,7 @@ module ViewComponent
 
             check_class = check_class.superclass
           end
+          templates
         end
 
         def __vc_fc_file_metadata(path)
