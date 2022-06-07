@@ -7,5 +7,9 @@ module UntrackedDependencies
     def vc_inherits_view
       @component = Users::ExtendedUserComponent.new @blog
     end
+
+    def vc_child_has_view
+      @component = Users::ExtendedWithViewUserComponent.new @blog
+    end
   end
 end
