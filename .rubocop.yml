@@ -49,6 +49,7 @@ Style/DisableCopsWithinSourceCodeDirective:
     - Metrics/BlockLength
     - Metrics/ParameterLists
     - Naming/AccessorMethodName
+    - Style/SymbolProc
 
 Style/Documentation:
   Enabled: false
