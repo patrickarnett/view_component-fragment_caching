@@ -5,9 +5,10 @@ require:
 AllCops:
   EnabledByDefault: true
   Exclude:
-    - 'bin/**/*'
-    - 'Rakefile'
-    - 'spec/dummy/bin/**/*'
+    - bin/**/*
+    - spec/dummy/bin/**/*
+    - vendor/bundle/**/*
+    - Rakefile
   TargetRubyVersion: 2.6
 
 Bundler/GemComment:
