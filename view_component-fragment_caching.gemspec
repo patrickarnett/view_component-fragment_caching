@@ -6,8 +6,7 @@ require_relative 'lib/view_component/fragment_caching/version'
   spec.authors     = ['Patrick Arnett']
   spec.email       = ['patrick.a.arnett@gmail.com']
   spec.summary     = 'Bust fragment caches when view components update'
-  spec.description = 'Monkey patch ActionView and ViewComponent to detect and compile' \
-                     'updated view components within cached fragments.'
+  spec.description = 'Monkey patch ActionView to track and digest view components within cached fragments.'
   spec.license     = 'MIT'
 
   github_url = 'https://www.github.com/patrickarnett/view_component-fragment_caching'
