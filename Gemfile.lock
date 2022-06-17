@@ -231,7 +231,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara (~> 3.36)
-  pry-rails
+  pry-rails (~> 0.3)
   rspec-rails (~> 5.1)
   rubocop (~> 1.26)
   rubocop-rails (~> 2.14)

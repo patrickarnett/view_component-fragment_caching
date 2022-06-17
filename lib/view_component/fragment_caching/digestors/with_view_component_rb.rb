@@ -19,9 +19,9 @@ module ViewComponent
 
           def ruby_nodes(name, template, klass)
             identifier = template.identifier
-            if identifier.end_with?('.rb') ||
-              !identifier.match?(view_component_path_regex) ||
-              (component_class = name.classify.safe_constantize).nil?
+            if identifier.end_with?('.rb') || !identifier.match?(view_component_path_regex) ||
+               (component_class = name.classify.safe_constantize).nil?
+
               return []
             end
 
@@ -47,7 +47,7 @@ module ViewComponent
             ancestors = component_class.ancestors
             return [] unless ancestors.include? ViewComponent::Base
 
-            ancestors.each_with_object([]) do |ancestor, memo|
+            ancestors.each_with_object [] do |ancestor, memo|
               return memo if ancestor == ViewComponent::Base
 
               memo << ancestor if ancestor.is_a? Class

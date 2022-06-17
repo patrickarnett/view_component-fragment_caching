@@ -25,6 +25,9 @@ RSpec/AlignLeftLetBrace:
 RSpec/AlignRightLetBrace:
   Enabled: false
 
+RSpec/ExampleLength:
+  Enabled: false
+
 RSpec/LetSetup:
   Enabled: false
 

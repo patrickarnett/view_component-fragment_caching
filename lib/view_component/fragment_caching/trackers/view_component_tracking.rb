@@ -76,7 +76,7 @@ module ViewComponent
           return if dependency.blank?
 
           path = dependency.underscore
-          dependencies << path unless dependencies.include?(path)
+          dependencies << path unless dependencies.include? path
         end
 
         def view_component_inheritance_dependencies

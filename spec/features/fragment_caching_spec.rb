@@ -3,13 +3,13 @@ require 'rails_helper'
 # rubocop:disable Metrics/BlockLength
 describe 'fragment caching', type: :feature do
   def modify_file(file)
-    filename = Rails.root.join(file)
-    old_content = File.read(filename)
+    filename = Rails.root.join file
+    old_content = File.read filename
     begin
-      File.open(filename, "wb+") { |f| f.write("#{old_content}\n#comment") }
+      File.open(filename, 'wb+') { |f| f.write("#{old_content}\n#comment") }
       yield
     ensure
-      File.open(filename, "wb+") { |f| f.write(old_content) }
+      File.open(filename, 'wb+') { |f| f.write(old_content) }
     end
   end
 
@@ -37,7 +37,7 @@ describe 'fragment caching', type: :feature do
         end
 
         context 'when parent view file is updated' do
-          it ' does not bust cache' do
+          it 'does not bust cache' do
             blog = Blog.new 'original title'
             visit "tracked_dependencies/render_dependencies/vc_child_has_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'original title'
@@ -185,7 +185,7 @@ describe 'fragment caching', type: :feature do
         end
 
         context 'when parent view file is updated' do
-          it ' does not bust cache' do
+          it 'does not bust cache' do
             blog = Blog.new 'original title'
             visit "tracked_dependencies/explicit_dependencies/vc_child_has_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'original title'
@@ -315,7 +315,7 @@ describe 'fragment caching', type: :feature do
     context 'when detected via render call' do
       context 'when child component has its own view file' do
         context 'when parent rb file is updated' do
-          it ' does not bust cache' do
+          it 'does not bust cache' do
             blog = Blog.new 'original title'
             visit "untracked_dependencies/render_dependencies/vc_child_has_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'original title'
@@ -335,7 +335,7 @@ describe 'fragment caching', type: :feature do
         end
 
         context 'when parent view file is updated' do
-          it ' does not bust cache' do
+          it 'does not bust cache' do
             blog = Blog.new 'original title'
             visit "untracked_dependencies/render_dependencies/vc_child_has_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'original title'
@@ -357,7 +357,7 @@ describe 'fragment caching', type: :feature do
 
       context 'when child component inherits view file' do
         context 'when parent rb file is updated' do
-          it ' does not busts cache' do
+          it 'does not busts cache' do
             blog = Blog.new 'original title'
             visit "untracked_dependencies/render_dependencies/vc_inherits_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'original title'
@@ -377,7 +377,7 @@ describe 'fragment caching', type: :feature do
         end
 
         context 'when parent view file is updated' do
-          it ' does not bust cache' do
+          it 'does not bust cache' do
             blog = Blog.new 'original title'
             visit "untracked_dependencies/render_dependencies/vc_inherits_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'original title'
@@ -397,7 +397,7 @@ describe 'fragment caching', type: :feature do
         end
 
         context 'when child rb file is updated' do
-          it ' does not bust cache' do
+          it 'does not bust cache' do
             blog = Blog.new 'original title'
             visit "untracked_dependencies/render_dependencies/vc_inherits_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'original title'
@@ -419,7 +419,7 @@ describe 'fragment caching', type: :feature do
 
       context 'when component inherits from vc base' do
         context 'when rb file is updated' do
-          it ' does not bust cache' do
+          it 'does not bust cache' do
             blog = Blog.new 'original title'
             visit "untracked_dependencies/render_dependencies/vc_has_own_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'original title'
@@ -439,7 +439,7 @@ describe 'fragment caching', type: :feature do
         end
 
         context 'when view file is updated' do
-          it ' does not bust cache' do
+          it 'does not bust cache' do
             blog = Blog.new 'original title'
             visit "untracked_dependencies/render_dependencies/vc_has_own_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'original title'
@@ -463,7 +463,7 @@ describe 'fragment caching', type: :feature do
     context 'when detected via explicit dependency' do
       context 'when child component has its own view file' do
         context 'when parent rb file is updated' do
-          it ' does not bust cache' do
+          it 'does not bust cache' do
             blog = Blog.new 'original title'
             visit "untracked_dependencies/explicit_dependencies/vc_child_has_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'original title'
@@ -483,7 +483,7 @@ describe 'fragment caching', type: :feature do
         end
 
         context 'when parent view file is updated' do
-          it ' does not bust cache' do
+          it 'does not bust cache' do
             blog = Blog.new 'original title'
             visit "untracked_dependencies/explicit_dependencies/vc_child_has_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'original title'
@@ -505,7 +505,7 @@ describe 'fragment caching', type: :feature do
 
       context 'when child component inherits view file' do
         context 'when parent rb file is updated' do
-          it ' does not bust cache' do
+          it 'does not bust cache' do
             blog = Blog.new 'original title'
             visit "untracked_dependencies/explicit_dependencies/vc_inherits_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'original title'
@@ -525,7 +525,7 @@ describe 'fragment caching', type: :feature do
         end
 
         context 'when parent view file is updated' do
-          it ' does not bust cache' do
+          it 'does not bust cache' do
             blog = Blog.new 'original title'
             visit "untracked_dependencies/explicit_dependencies/vc_inherits_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'original title'
@@ -545,7 +545,7 @@ describe 'fragment caching', type: :feature do
         end
 
         context 'when child rb file is updated' do
-          it ' does not bust cache' do
+          it 'does not bust cache' do
             blog = Blog.new 'original title'
             visit "untracked_dependencies/explicit_dependencies/vc_inherits_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'original title'
@@ -567,7 +567,7 @@ describe 'fragment caching', type: :feature do
 
       context 'when component inherits from vc base' do
         context 'when rb file is updated' do
-          it ' does not bust cache' do
+          it 'does not bust cache' do
             blog = Blog.new 'original title'
             visit "untracked_dependencies/explicit_dependencies/vc_has_own_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'original title'
@@ -587,7 +587,7 @@ describe 'fragment caching', type: :feature do
         end
 
         context 'when view file is updated' do
-          it ' does not bust cache' do
+          it 'does not bust cache' do
             blog = Blog.new 'original title'
             visit "untracked_dependencies/explicit_dependencies/vc_has_own_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'original title'
@@ -609,3 +609,4 @@ describe 'fragment caching', type: :feature do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
