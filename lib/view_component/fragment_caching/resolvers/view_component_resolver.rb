@@ -9,38 +9,46 @@ module ViewComponent
 
         class PathParser < ActionView::Resolver::PathParser
           class MatchedAttributes
-            FORMATS = (ActionView::Template::Types.symbols | %i(rb)).map(&Regexp.method(:escape)).join('|').freeze
-            private_constant :FORMATS
+            class << self
+              def formats
+                @formats ||= (ActionView::Template::Types.symbols | %i(rb)).map(&Regexp.method(:escape)).join('|').freeze
+              end
 
-            HANDLERS = ActionView::Template::Handlers.extensions.map(&Regexp.method(:escape)).join('|').freeze
-            private_constant :HANDLERS
+              def handlers
+                @handlers ||= ActionView::Template::Handlers.extensions.map(&Regexp.method(:escape)).join('|').freeze
+              end
 
-            LOCALES = '(?!rb)[a-z]{2}(?:-[A-Z]{2})?'.freeze
-            private_constant :LOCALES
+              def locales
+                @locales ||= '(?!rb)[a-z]{2}(?:-[A-Z]{2})?'.freeze
+              end
 
-            VARIANTS = '[^.]*'.freeze
-            private_constant :VARIANTS
+              def variants
+                @variants ||= '[^.]*'.freeze
+              end
 
-            MATCH_NAMES = %i(prefix partial action locale format variant handler).freeze
-            private_constant :MATCH_NAMES
+              def match_names
+                @match_names ||= %i(prefix partial action locale format variant handler).freeze
+              end
 
-            REGEX = %r{
-              \A
-              (?:(?<prefix>.*)/)?
-              (?<partial>_)?
-              (?<action>.*?)
-              (?:\.(?<locale>#{LOCALES}))??
-              (?:\.(?<format>#{FORMATS}))??
-              (?:\+(?<variant>#{VARIANTS}))??
-              (?:\.(?<handler>#{HANDLERS}))?
-              \z
-            }x.freeze
-            private_constant :REGEX
+              def regex
+                @regex ||= %r{
+                  \A
+                  (?:(?<prefix>.*)/)?
+                  (?<partial>_)?
+                  (?<action>.*?)
+                  (?:\.(?<locale>#{locales}))??
+                  (?:\.(?<format>#{formats}))??
+                  (?:\+(?<variant>#{variants}))??
+                  (?:\.(?<handler>#{handlers}))?
+                  \z
+                }x.freeze
+              end
+            end
 
             delegate :[], to: :match
 
             def initialize(path)
-              @match = REGEX.match path
+              @match = self.class.regex.match path
             end
 
             def format
@@ -60,11 +68,11 @@ module ViewComponent
             end
 
             def method_missing(method_name, *)
-              match[method_name] if MATCH_NAMES.include? method_name
+              match[method_name] if self.class.match_names.include? method_name
             end
 
             def respond_to_missing?(method_name)
-              MATCH_NAMES.include? method_name
+              self.class.match_names.include? method_name
             end
 
             private
