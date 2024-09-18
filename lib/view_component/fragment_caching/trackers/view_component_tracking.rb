@@ -11,7 +11,7 @@ module ViewComponent
         MODULE_NAME = /(?:((::)?#{CAMEL_PHRASE}+)+)/.freeze
         private_constant :MODULE_NAME
 
-        VIEW_COMPONENT_NAME = /(?:#{MODULE_NAME}Component)/.freeze
+        VIEW_COMPONENT_NAME = /(?:#{MODULE_NAME}?(::)?Component)/.freeze
         private_constant :VIEW_COMPONENT_NAME
 
         MODULE_NAME_END = /(?:\b[^:])/.freeze

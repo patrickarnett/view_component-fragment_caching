@@ -1,4 +1,4 @@
 module Blogs
-  class ExtendedBlogComponent < Blogs::BlogComponent
+  class ExtendedBlogComponent < Blogs::Blog::Component
   end
 end
