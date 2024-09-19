@@ -11,7 +11,10 @@ module ViewComponent
           class MatchedAttributes
             class << self
               def formats
-                @formats ||= (ActionView::Template::Types.symbols | %i(rb)).map(&Regexp.method(:escape)).join('|').freeze
+                @formats ||= (ActionView::Template::Types.symbols | %i(rb))
+                             .map(&Regexp.method(:escape))
+                             .join('|')
+                             .freeze
               end
 
               def handlers
@@ -33,13 +36,9 @@ module ViewComponent
               def regex
                 @regex ||= %r{
                   \A
-                  (?:(?<prefix>.*)/)?
-                  (?<partial>_)?
-                  (?<action>.*?)
-                  (?:\.(?<locale>#{locales}))??
-                  (?:\.(?<format>#{formats}))??
-                  (?:\+(?<variant>#{variants}))??
-                  (?:\.(?<handler>#{handlers}))?
+                  (?:(?<prefix>.*)/)?(?<partial>_)?(?<action>.*?)
+                  (?:\.(?<locale>#{locales}))??(?:\.(?<format>#{formats}))??
+                  (?:\+(?<variant>#{variants}))??(?:\.(?<handler>#{handlers}))?
                   \z
                 }x.freeze
               end
