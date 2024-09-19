@@ -1,7 +1,7 @@
 module TrackedDependencies
   class ExplicitDependenciesController < ApplicationController
     def vc_has_own_view
-      @component = Blogs::Blog::Component.new @blog
+      @component = Blogs::Component.new @blog
     end
 
     def vc_inherits_view
