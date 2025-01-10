@@ -21,7 +21,7 @@ require_relative 'lib/view_component/fragment_caching/version'
       ::Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
     end
 
-  spec.add_dependency 'rails', '~> 7.0'
+  spec.add_dependency 'rails', '>= 7.0.0'
   spec.add_dependency 'view_component', '~> 3.9'
 
   spec.add_development_dependency 'capybara', '~> 3.36'
