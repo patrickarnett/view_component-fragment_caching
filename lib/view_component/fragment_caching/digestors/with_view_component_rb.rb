@@ -26,7 +26,7 @@ module ViewComponent
             end
 
             view_component_ancestors(component_class).map do |ancestor|
-              anc_identifier = ancestor.source_location
+              anc_identifier = ancestor.identifier
               anc_logical_name = ancestor.name.underscore
               view_component_ruby_node anc_identifier, anc_logical_name, template, klass
             end

@@ -22,7 +22,7 @@ require_relative 'lib/view_component/fragment_caching/version'
     end
 
   spec.add_dependency 'rails', '~> 7.0'
-  spec.add_dependency 'view_component', '< 3.21'
+  spec.add_dependency 'view_component', '< 4.0'
 
   spec.add_development_dependency 'capybara', '~> 3.36'
   spec.add_development_dependency 'pry-rails', '~> 0.3'
