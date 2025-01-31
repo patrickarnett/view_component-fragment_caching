@@ -24,12 +24,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#extended-with-view', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_child_has_view?#{blog.to_query}"
+            visit "tracked_dependencies/render_dependencies/vc_child_has_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#extended-with-view', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.rb' do
-              visit "vc_child_has_view?#{blog.to_query}"
+              visit "tracked_dependencies/render_dependencies/vc_child_has_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#extended-with-view', text: 'new title'
             end
@@ -44,12 +44,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#extended-with-view', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_child_has_view?#{blog.to_query}"
+            visit "tracked_dependencies/render_dependencies/vc_child_has_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#extended-with-view', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.html.erb' do
-              visit "vc_child_has_view?#{blog.to_query}"
+              visit "tracked_dependencies/render_dependencies/vc_child_has_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#extended-with-view', text: 'original title'
             end
@@ -66,12 +66,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#blog-component', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_inherits_view?#{blog.to_query}"
+            visit "tracked_dependencies/render_dependencies/vc_inherits_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#blog-component', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.rb' do
-              visit "vc_inherits_view?#{blog.to_query}"
+              visit "tracked_dependencies/render_dependencies/vc_inherits_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#blog-component', text: 'new title'
             end
@@ -86,12 +86,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#blog-component', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_inherits_view?#{blog.to_query}"
+            visit "tracked_dependencies/render_dependencies/vc_inherits_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#blog-component', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.html.erb' do
-              visit "vc_inherits_view?#{blog.to_query}"
+              visit "tracked_dependencies/render_dependencies/vc_inherits_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#blog-component', text: 'new title'
             end
@@ -106,12 +106,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#blog-component', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_inherits_view?#{blog.to_query}"
+            visit "tracked_dependencies/render_dependencies/vc_inherits_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#blog-component', text: 'original title'
 
             modify_file 'app/included_components/blogs/extended_blog_component.rb' do
-              visit "vc_inherits_view?#{blog.to_query}"
+              visit "tracked_dependencies/render_dependencies/vc_inherits_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#blog-component', text: 'new title'
             end
@@ -128,12 +128,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#blog-component', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_has_own_view?#{blog.to_query}"
+            visit "tracked_dependencies/render_dependencies/vc_has_own_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#blog-component', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.rb' do
-              visit "vc_has_own_view?#{blog.to_query}"
+              visit "tracked_dependencies/render_dependencies/vc_has_own_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#blog-component', text: 'new title'
             end
@@ -148,12 +148,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#blog-component', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_has_own_view?#{blog.to_query}"
+            visit "tracked_dependencies/render_dependencies/vc_has_own_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#blog-component', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.html.erb' do
-              visit "vc_has_own_view?#{blog.to_query}"
+              visit "tracked_dependencies/render_dependencies/vc_has_own_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#blog-component', text: 'new title'
             end
@@ -172,12 +172,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#extended-with-view', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_child_has_view?#{blog.to_query}"
+            visit "tracked_dependencies/explicit_dependencies/vc_child_has_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#extended-with-view', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.rb' do
-              visit "vc_child_has_view?#{blog.to_query}"
+              visit "tracked_dependencies/explicit_dependencies/vc_child_has_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#extended-with-view', text: 'new title'
             end
@@ -192,12 +192,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#extended-with-view', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_child_has_view?#{blog.to_query}"
+            visit "tracked_dependencies/explicit_dependencies/vc_child_has_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#extended-with-view', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.html.erb' do
-              visit "vc_child_has_view?#{blog.to_query}"
+              visit "tracked_dependencies/explicit_dependencies/vc_child_has_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#extended-with-view', text: 'original title'
             end
@@ -214,12 +214,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#blog-component', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_inherits_view?#{blog.to_query}"
+            visit "tracked_dependencies/explicit_dependencies/vc_inherits_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#blog-component', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.rb' do
-              visit "vc_inherits_view?#{blog.to_query}"
+              visit "tracked_dependencies/explicit_dependencies/vc_inherits_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#blog-component', text: 'new title'
             end
@@ -234,12 +234,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#blog-component', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_inherits_view?#{blog.to_query}"
+            visit "tracked_dependencies/explicit_dependencies/vc_inherits_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#blog-component', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.html.erb' do
-              visit "vc_inherits_view?#{blog.to_query}"
+              visit "tracked_dependencies/explicit_dependencies/vc_inherits_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#blog-component', text: 'new title'
             end
@@ -254,12 +254,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#blog-component', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_inherits_view?#{blog.to_query}"
+            visit "tracked_dependencies/explicit_dependencies/vc_inherits_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#blog-component', text: 'original title'
 
             modify_file 'app/included_components/blogs/extended_blog_component.rb' do
-              visit "vc_inherits_view?#{blog.to_query}"
+              visit "tracked_dependencies/explicit_dependencies/vc_inherits_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#blog-component', text: 'new title'
             end
@@ -276,12 +276,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#blog-component', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_has_own_view?#{blog.to_query}"
+            visit "tracked_dependencies/explicit_dependencies/vc_has_own_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#blog-component', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.rb' do
-              visit "vc_has_own_view?#{blog.to_query}"
+              visit "tracked_dependencies/explicit_dependencies/vc_has_own_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#blog-component', text: 'new title'
             end
@@ -296,12 +296,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#blog-component', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_has_own_view?#{blog.to_query}"
+            visit "tracked_dependencies/explicit_dependencies/vc_has_own_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#blog-component', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.html.erb' do
-              visit "vc_has_own_view?#{blog.to_query}"
+              visit "tracked_dependencies/explicit_dependencies/vc_has_own_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#blog-component', text: 'new title'
             end
@@ -322,12 +322,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#extended-with-view', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_child_has_view?#{blog.to_query}"
+            visit "untracked_dependencies/render_dependencies/vc_child_has_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#extended-with-view', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.rb' do
-              visit "vc_child_has_view?#{blog.to_query}"
+              visit "untracked_dependencies/render_dependencies/vc_child_has_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#extended-with-view', text: 'original title'
             end
@@ -342,12 +342,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#extended-with-view', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_child_has_view?#{blog.to_query}"
+            visit "untracked_dependencies/render_dependencies/vc_child_has_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#extended-with-view', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.html.erb' do
-              visit "vc_child_has_view?#{blog.to_query}"
+              visit "untracked_dependencies/render_dependencies/vc_child_has_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#extended-with-view', text: 'original title'
             end
@@ -364,12 +364,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#user-component', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_inherits_view?#{blog.to_query}"
+            visit "untracked_dependencies/render_dependencies/vc_inherits_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#user-component', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.rb' do
-              visit "vc_inherits_view?#{blog.to_query}"
+              visit "untracked_dependencies/render_dependencies/vc_inherits_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#user-component', text: 'original title'
             end
@@ -384,12 +384,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#user-component', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_inherits_view?#{blog.to_query}"
+            visit "untracked_dependencies/render_dependencies/vc_inherits_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#user-component', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.html.erb' do
-              visit "vc_inherits_view?#{blog.to_query}"
+              visit "untracked_dependencies/render_dependencies/vc_inherits_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#user-component', text: 'original title'
             end
@@ -404,12 +404,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#user-component', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_inherits_view?#{blog.to_query}"
+            visit "untracked_dependencies/render_dependencies/vc_inherits_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#user-component', text: 'original title'
 
             modify_file 'app/included_components/blogs/extended_blog_component.rb' do
-              visit "vc_inherits_view?#{blog.to_query}"
+              visit "untracked_dependencies/render_dependencies/vc_inherits_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#user-component', text: 'original title'
             end
@@ -426,12 +426,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#user-component', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_has_own_view?#{blog.to_query}"
+            visit "untracked_dependencies/render_dependencies/vc_has_own_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#user-component', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.rb' do
-              visit "vc_has_own_view?#{blog.to_query}"
+              visit "untracked_dependencies/render_dependencies/vc_has_own_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#user-component', text: 'original title'
             end
@@ -446,12 +446,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#user-component', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_has_own_view?#{blog.to_query}"
+            visit "untracked_dependencies/render_dependencies/vc_has_own_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#user-component', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.html.erb' do
-              visit "vc_has_own_view?#{blog.to_query}"
+              visit "untracked_dependencies/render_dependencies/vc_has_own_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#user-component', text: 'original title'
             end
@@ -470,12 +470,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#extended-with-view', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_child_has_view?#{blog.to_query}"
+            visit "untracked_dependencies/explicit_dependencies/vc_child_has_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#extended-with-view', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.rb' do
-              visit "vc_child_has_view?#{blog.to_query}"
+              visit "untracked_dependencies/explicit_dependencies/vc_child_has_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#extended-with-view', text: 'original title'
             end
@@ -490,12 +490,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#extended-with-view', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_child_has_view?#{blog.to_query}"
+            visit "untracked_dependencies/explicit_dependencies/vc_child_has_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#extended-with-view', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.html.erb' do
-              visit "vc_child_has_view?#{blog.to_query}"
+              visit "untracked_dependencies/explicit_dependencies/vc_child_has_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#extended-with-view', text: 'original title'
             end
@@ -512,12 +512,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#user-component', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_inherits_view?#{blog.to_query}"
+            visit "untracked_dependencies/explicit_dependencies/vc_inherits_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#user-component', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.rb' do
-              visit "vc_inherits_view?#{blog.to_query}"
+              visit "untracked_dependencies/explicit_dependencies/vc_inherits_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#user-component', text: 'original title'
             end
@@ -532,12 +532,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#user-component', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_inherits_view?#{blog.to_query}"
+            visit "untracked_dependencies/explicit_dependencies/vc_inherits_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#user-component', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.html.erb' do
-              visit "vc_inherits_view?#{blog.to_query}"
+              visit "untracked_dependencies/explicit_dependencies/vc_inherits_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#user-component', text: 'original title'
             end
@@ -552,12 +552,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#user-component', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_inherits_view?#{blog.to_query}"
+            visit "untracked_dependencies/explicit_dependencies/vc_inherits_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#user-component', text: 'original title'
 
             modify_file 'app/included_components/blogs/extended_blog_component.rb' do
-              visit "vc_inherits_view?#{blog.to_query}"
+              visit "untracked_dependencies/explicit_dependencies/vc_inherits_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#user-component', text: 'original title'
             end
@@ -574,12 +574,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#user-component', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_has_own_view?#{blog.to_query}"
+            visit "untracked_dependencies/explicit_dependencies/vc_has_own_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#user-component', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.rb' do
-              visit "vc_has_own_view?#{blog.to_query}"
+              visit "untracked_dependencies/explicit_dependencies/vc_has_own_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#user-component', text: 'original title'
             end
@@ -594,12 +594,12 @@ describe 'fragment caching', type: :feature do
             assert_selector '#user-component', text: 'original title'
 
             blog = Blog.new 'new title'
-            visit "vc_has_own_view?#{blog.to_query}"
+            visit "untracked_dependencies/explicit_dependencies/vc_has_own_view?#{blog.to_query}"
             assert_selector '#uncached', text: 'new title'
             assert_selector '#user-component', text: 'original title'
 
             modify_file 'app/included_components/blogs/component.html.erb' do
-              visit "vc_has_own_view?#{blog.to_query}"
+              visit "untracked_dependencies/explicit_dependencies/vc_has_own_view?#{blog.to_query}"
               assert_selector '#uncached', text: 'new title'
               assert_selector '#user-component', text: 'original title'
             end

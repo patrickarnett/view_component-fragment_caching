@@ -23,5 +23,6 @@ jobs:
         run: |
           bundle config path vendor/bundle
           bundle install
+          bundle exec appraisal install
       - name: Run RSpec
-        run: bundle exec rspec
+        run: bundle exec appraisal rspec
