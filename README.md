@@ -54,7 +54,7 @@ It is important that naming conventions are followed. The tracker will ignore co
 ## Contributing
 Please follow conventions and write tests.
 ```bash
-$ bundle exec rspec
+$ bundle exec appraisal rspec
 $ bundle exec rubocop
 ```
 

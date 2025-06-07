@@ -113,7 +113,7 @@ module ViewComponent
           locals    = args.fetch 5, []
 
           key = build_key given_key, details
-          super name, prefix, partial, details, key, locals
+          super(name, prefix, partial, details, key, locals)
         end
 
         private
