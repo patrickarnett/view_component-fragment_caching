@@ -12,16 +12,9 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2.4
-      - name: Cache gems
-        uses: actions/cache@v1
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-rubocop-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-rubocop-
       - name: Install gems
-        run: |
-          bundle config path vendor/bundle
-          bundle install
+        run: bundle install
+      - name: Install appraisal
+        run: bundle exec appraisal install
       - name: Run RSpec
-        run: bundle exec rspec
+        run: bundle exec appraisal rspec

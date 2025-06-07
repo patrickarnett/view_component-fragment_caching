@@ -45,7 +45,7 @@ module ViewComponent
 
           def view_component_ancestors(component_class)
             ancestors = component_class.ancestors
-            return [] unless ancestors.include? ViewComponent::Base
+            return [] if ancestors.exclude? ViewComponent::Base
 
             ancestors.each_with_object [] do |ancestor, memo|
               return memo if ancestor == ViewComponent::Base

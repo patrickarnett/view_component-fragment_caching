@@ -1,17 +1,22 @@
-require:
+plugins:
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-rspec_rails
 
 AllCops:
   EnabledByDefault: true
   Exclude:
     - bin/**/*
+    - gemfiles/**/*
     - spec/dummy/bin/**/*
     - vendor/bundle/**/*
     - Rakefile
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 2.7
 
 Bundler/GemComment:
+  Enabled: false
+
+Gemspec/DevelopmentDependencies:
   Enabled: false
 
 Layout/RedundantLineBreak:
@@ -49,6 +54,8 @@ Style/DisableCopsWithinSourceCodeDirective:
     - Metrics/BlockLength
     - Metrics/ParameterLists
     - Naming/AccessorMethodName
+    - RSpec/BeforeAfterAll
+    - RSpec/MultipleExpectations
     - Style/SymbolProc
 
 Style/Documentation:
@@ -71,6 +78,9 @@ Style/PercentLiteralDelimiters:
   PreferredDelimiters:
     '%i': '()'
     '%w': '()'
+
+Style/RedundantConstantBase:
+  Enabled: false
 
 Style/WordArray:
   Enabled: true

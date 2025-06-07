@@ -1,6 +1,7 @@
 *.gem
 /.bundle/
 /doc/
+/gemfiles/
 /log/*.log
 /pkg/
 /tmp/
