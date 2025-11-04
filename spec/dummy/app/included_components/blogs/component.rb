@@ -1,7 +1,7 @@
 module Blogs
   class Component < ViewComponent::Base
     def initialize(blog)
-      super
+      super()
       @blog = blog
     end
 

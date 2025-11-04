@@ -22,7 +22,7 @@ require_relative 'lib/view_component/fragment_caching/version'
     end
 
   spec.add_dependency 'rails', '>= 7.0', '< 8.1'
-  spec.add_dependency 'view_component', '< 4.0'
+  spec.add_dependency 'view_component', '< 5.0'
 
   spec.add_development_dependency 'appraisal', '~> 2.5'
   spec.add_development_dependency 'nokogiri', '~> 1.18'
