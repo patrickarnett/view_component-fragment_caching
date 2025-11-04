@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    view_component-fragment_caching (0.6.0)
+    view_component-fragment_caching (0.7.0)
       rails (>= 7.0, < 8.1)
       view_component (< 5.0)
 
