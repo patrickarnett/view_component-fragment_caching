@@ -55,13 +55,12 @@ module ViewComponent
           end
 
           def view_component_ruby_node(identifier, logical_name, template, klass)
-            "#{identifier.split('.').first}.rb".then do |rb_identifier|
-              next unless File.exist? rb_identifier
+            rb_identifier = "#{File.dirname(identifier)}/#{File.basename(identifier).split('.').first}.rb"
+            return unless File.exist? rb_identifier
 
-              rb_source = File.read rb_identifier
-              rb_template = new_ruby_template rb_source, rb_identifier, template, logical_name
-              klass.new logical_name, logical_name, rb_template, []
-            end
+            rb_source = File.read rb_identifier
+            rb_template = new_ruby_template rb_source, rb_identifier, template, logical_name
+            klass.new logical_name, logical_name, rb_template, []
           end
 
           def new_ruby_template(rb_source, rb_identifier, template, virtual_path)
