@@ -67,6 +67,9 @@ Style/DocumentationMethod:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Style/HashLookupMethod:
+  Enabled: false
+
 Style/MethodCallWithArgsParentheses:
   AllowParenthesesInCamelCaseMethod: true
   AllowParenthesesInStringInterpolation: true

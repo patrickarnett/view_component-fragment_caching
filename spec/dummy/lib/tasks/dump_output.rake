@@ -9,7 +9,7 @@ task dump_output: :environment do
 
       def run_test
         get ENV.fetch('TEST_REQUEST_PATH')
-        puts response.body
+        $stdout << response.body
       end
     end
 
