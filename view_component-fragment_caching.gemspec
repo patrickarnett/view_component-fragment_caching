@@ -18,10 +18,10 @@ require_relative 'lib/view_component/fragment_caching/version'
 
   spec.files =
     ::Dir.chdir ::File.expand_path(__dir__) do
-      ::Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
+      ::Dir['lib/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
     end
 
-  spec.add_dependency 'rails', '>= 7.0', '< 8.1'
+  spec.add_dependency 'rails', '>= 7.0', '< 8.2'
   spec.add_dependency 'view_component', '< 5.0'
 
   spec.add_development_dependency 'appraisal', '~> 2.5'
