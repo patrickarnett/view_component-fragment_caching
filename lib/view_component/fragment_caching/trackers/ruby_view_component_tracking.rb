@@ -1,7 +1,7 @@
 module ViewComponent
   module FragmentCaching
     module Trackers
-      module ViewComponentTracking
+      module RubyViewComponentTracking
         def dependencies
           super |
             view_component_inheritance_dependencies |
@@ -14,28 +14,23 @@ module ViewComponent
           base_render_deps = super
 
           vc_render_deps = []
-          render_calls = source.split(/\brender\b/).drop(1)
+          render_calls = template.source.split(/\brender\b/).drop(1)
           render_calls.each do |arguments|
-            add_dependencies vc_render_deps, arguments, VIEW_COMPONENT_RENDER_ARGUMENTS
+            add_view_component_dependency vc_render_deps, arguments
           end
 
           base_render_deps | vc_render_deps
         end
 
-        def add_dependencies(render_dependencies, arguments, pattern)
-          arguments.scan pattern do
+        def add_view_component_dependency(dependencies, arguments)
+          arguments.scan VIEW_COMPONENT_RENDER_ARGUMENTS do
             match = Regexp.last_match.named_captures.symbolize_keys
-            add_dynamic_dependency render_dependencies, match[:dynamic]
-            add_static_dependency render_dependencies, match[:static], match[:quote]
-            add_view_component_dependency render_dependencies, match[:view_component]
+            component_name = match[:view_component]
+            next if component_name.blank?
+
+            path = component_name.underscore
+            dependencies << path if dependencies.exclude? path
           end
-        end
-
-        def add_view_component_dependency(dependencies, dependency)
-          return if dependency.blank?
-
-          path = dependency.underscore
-          dependencies << path if dependencies.exclude? path
         end
 
         def view_component_inheritance_dependencies
@@ -47,7 +42,7 @@ module ViewComponent
         end
 
         def scan_source(pattern)
-          source.scan(pattern).flatten.uniq.map(&:underscore)
+          template.source.scan(pattern).flatten.uniq.map(&:underscore)
         end
       end
     end
